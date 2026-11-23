@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}body{margin:0}</style>
-<title>Story Compass</title>
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
-<meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
+<title>Mind Your Language</title>
 <meta name="description" content="Pick a discourse genre for a school-age client, rate a language sample, and get goals, a session plan and a parent sheet.">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fredoka:wght@400..700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@600&family=Fredoka:wght@400..700&display=swap">
 <style>
 /* Hallmark · shape: app screen · genre: playful · theme: Hum (deal 1/3, seed working-tool-where-speech-891a·531b027b·2026-11-16·r0) · redesign: full
  * nav: kept, the left rail of six steps as card-stock tiles · signature: the five genre tiles, one colour each, that press in when chosen · states: empty, full, saving
@@ -641,12 +630,179 @@ details.proto[open]>summary{margin-bottom:var(--space-2xs)}
 .sgt th .xall{margin-left:calc(var(--space-sm) * -1);font-family:var(--font-body);min-height:28px}
 .sgt tr.det td{padding-left:var(--space-lg)}
 .sgt tr.det .detg{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-xs) var(--space-md)}
+/* step names can be shown in full on a narrow screen */
+.steprow{display:contents}
+.steptog{display:none}
+@media (max-width:60rem){
+  .rail .steprow{display:flex;align-items:flex-start;gap:var(--space-xs);flex-basis:100%;order:4;min-width:0}
+  .wrap.rc .rail .steprow{order:1;flex:1 1 0}
+  .rail .steprow .snav,.wrap.rc .rail .steprow .snav{flex:1 1 0;min-width:0;order:0}
+  .steptog{display:inline-flex;align-items:center;flex:none;border:0;background:none;color:var(--color-muted);font-size:var(--text-sm);min-height:36px;padding:0 var(--space-xs);border-radius:var(--radius-input)}
+  .steptog:hover{color:var(--color-ink);background:var(--color-paper-3)}
+  .rail.names .snav,.wrap.rc .rail.names .snav{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));overflow:visible}
+  .rail.names .sn span,.wrap.rc .rail.names .sn span{display:inline}
+  .rail.names .sn .ck,.wrap.rc .rail.names .sn .ck{display:inline}
+  .rail.names .sn,.wrap.rc .rail.names .sn{padding-right:var(--space-xs)}
+}
+@media (max-width:40rem){.rail.names .steprow{flex-wrap:wrap}.rail.names .steptog{margin-left:auto;min-height:28px}}
+@media (max-width:40rem){.rail.names .steprow .snav,.wrap.rc .rail.names .steprow .snav{flex:1 1 100%}}
+
+/* protocol panels: full-width, readable */
+.protorow{display:flex;flex-direction:column;gap:var(--space-xs);margin-bottom:var(--space-sm)}
+details.proto{font-size:var(--text-base,1rem);line-height:1.5;padding:var(--space-xs) var(--space-md)}
+details.proto>summary{min-height:var(--ctl);cursor:pointer}
+details.proto[open]{padding-bottom:var(--space-md)}
+.pbody{display:flex;flex-direction:column;gap:var(--space-sm)}
+.plead{max-width:70ch;margin:0}
+.pcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:var(--space-md) var(--space-lg)}
+.pcols section{min-width:0;display:flex;flex-direction:column;gap:var(--space-2xs)}
+.pcols h3{font-family:var(--font-display);font-size:var(--text-md,1.0625rem);font-weight:600;margin:var(--space-xs) 0 0}
+.pcols section>h3:first-child{margin-top:0}
+.pcols p{margin:var(--space-2xs) 0 0}
+.pcols ol,.pcols ul{gap:var(--space-xs);padding-left:var(--space-md)}
+.pcols li{padding-left:var(--space-3xs)}
+details.pin{margin-top:var(--space-xs);border-top:1px solid var(--color-rule,var(--line));padding-top:var(--space-xs)}
+details.pin>summary{cursor:pointer}
+details.pin ol{font-size:var(--text-sm)}
+/* photo prompts */
+.pnv{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:var(--space-md);align-items:start;background:var(--color-paper,var(--panel));border-radius:var(--radius-stock);padding:var(--space-sm)}
+.pnfig{margin:0;display:flex;justify-content:center;background:var(--color-paper-2);border-radius:calc(var(--radius-stock) - 4px);overflow:hidden}
+.pnfig img{display:block;max-width:100%;width:auto;height:auto;max-height:22rem;object-fit:contain}
+.pnside{display:flex;flex-direction:column;gap:var(--space-xs);min-width:0}
+.pnside h3{font-family:var(--font-display);font-size:var(--text-lg,1.25rem);font-weight:600;margin:0}
+.pnside p{margin:0}
+.pnsay{font-size:var(--text-md,1.0625rem);font-weight:700}
+.pnnote{font-size:var(--text-sm);color:var(--color-muted)}
+.pnyn{font-size:var(--text-sm)}
+.pnnav{display:flex;flex-wrap:wrap;gap:var(--space-xs);margin-top:var(--space-2xs)}
+#pnOver{position:fixed;inset:0;z-index:90;background:var(--color-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-sm);padding:var(--space-sm)}
+#pnOver[hidden]{display:none}
+#pnOver img{max-width:100%;max-height:calc(100dvh - 5rem);object-fit:contain;border-radius:var(--radius-stock)}
+.pnbar{display:flex;align-items:center;gap:var(--space-sm);color:var(--color-paper,var(--panel));font-size:var(--text-sm)}
+@media (max-width:44rem){.pnv{grid-template-columns:minmax(0,1fr)}.pnfig img{max-height:15rem}}
+.pnnone{margin:0;padding:var(--space-xl,3rem) var(--space-md);color:var(--color-muted);font-size:var(--text-sm)}
+#pnOver .pnnone{color:var(--color-paper)}
+.pnbar .btn{color:var(--color-ink)}
+
+/* photo prompts: score while they talk */
+.pnhead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--space-xs)}
+.pnhead .pnnav{margin:0}
+.pnsc{display:flex;flex-direction:column;gap:var(--space-xs);margin-top:var(--space-2xs);padding-top:var(--space-xs);border-top:1px solid var(--color-rule)}
+.pnst{display:flex;gap:var(--space-xs)}
+.pnst .btn{flex:1}
+.pnst .btn.on{background:var(--grain),var(--g);color:var(--on-solid,var(--color-ink));font-weight:600}
+.pnck{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-2xs)}
+.pnck .cki{min-height:44px}
+.pnut{display:flex;align-items:center;gap:var(--space-xs);font-size:var(--text-sm)}
+.pnut span{margin-right:auto}
+.pnut b{min-width:2ch;text-align:center;font-size:var(--text-lg);font-variant-numeric:tabular-nums}
+.pnut .pnplus{min-width:5rem;min-height:44px}
+.pnsum{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-xs) var(--space-md);padding:var(--space-xs) var(--space-sm);background:var(--color-paper-2);border-radius:calc(var(--radius-stock) - 4px);font-size:var(--text-sm)}
+.pnsum b{font-size:var(--text-md);font-variant-numeric:tabular-nums}
+.pnsum .pnsp{flex:1}
+.pntime.over{color:var(--color-danger,var(--color-ink));text-decoration:underline}
+
+/* ---- Story page (exercise book) ---- */
+:root{--sp-desk:#e7dfcc;--sp-page:#fffdf6;--sp-ink:#23283a;--sp-muted:#646a7d;--sp-line:#c6d6ea;--sp-margin:#e8a0a0;--sp-pen:#c23b2e;--sp-edge:#cfc5ad;--sp-shadow:#bdb298;--sp-manila:#f0e2b8;--sp-sheet:#f4efe2;
+ --sp-c1:#d9572f;--sp-c2:#c08407;--sp-c3:#12776f;--sp-c4:#b13d77;--sp-c5:#3a4fa0;--sp-n1:#ffd9c9;--sp-n2:#ffe9a8;--sp-n3:#c9efe6;--sp-n4:#ffd3e6;--sp-n5:#d5ddff;--sp-hand:"Caveat","Comic Sans MS",cursive}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sp-desk:#191b21;--sp-page:#262a34;--sp-ink:#eeebe3;--sp-muted:#a3a8b8;--sp-line:#3a4354;--sp-margin:#7a4a4a;--sp-pen:#ff8a7a;--sp-edge:#3a3f4c;--sp-shadow:#0e0f13;--sp-manila:#3b3524;--sp-sheet:#20232c;
+ --sp-c1:#f08663;--sp-c2:#f0b740;--sp-c3:#55c4b8;--sp-c4:#ec86b6;--sp-c5:#93a6ee;--sp-n1:#5a3024;--sp-n2:#54441a;--sp-n3:#1d4a45;--sp-n4:#56263d;--sp-n5:#2a3460}}
+:root[data-theme="dark"]{--sp-desk:#191b21;--sp-page:#262a34;--sp-ink:#eeebe3;--sp-muted:#a3a8b8;--sp-line:#3a4354;--sp-margin:#7a4a4a;--sp-pen:#ff8a7a;--sp-edge:#3a3f4c;--sp-shadow:#0e0f13;--sp-manila:#3b3524;--sp-sheet:#20232c;
+ --sp-c1:#f08663;--sp-c2:#f0b740;--sp-c3:#55c4b8;--sp-c4:#ec86b6;--sp-c5:#93a6ee;--sp-n1:#5a3024;--sp-n2:#54441a;--sp-n3:#1d4a45;--sp-n4:#56263d;--sp-n5:#2a3460}
+details.spd[open]{padding-bottom:var(--space-sm)}
+.sp{--lh:44px;--mg:8rem;background:var(--sp-desk);color:var(--sp-ink);border-radius:var(--radius-stock);padding:12px 14px 14px;display:flex;flex-direction:column;gap:10px;font-size:1rem;line-height:1.4}
+.sp button,.sp select,.sp input,.sp textarea{font:inherit;color:inherit}
+.sp-bar{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px}
+.sp-help{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px;margin-right:auto}
+.sp-help span{color:var(--sp-muted);font-size:.88rem;margin-right:6px}
+.sp-help button{border:0;border-bottom:3px solid transparent;background:none;padding:6px 7px;font-size:.9rem;color:var(--sp-muted);min-height:36px;cursor:pointer}
+.sp-help button[aria-pressed="true"]{color:var(--sp-ink);font-weight:700;border-bottom-color:var(--sp-pen)}
+.sp-tog{border:1px solid var(--sp-edge);background:none;border-radius:6px;padding:5px 10px;font-size:.86rem;color:var(--sp-muted);min-height:36px;cursor:pointer}
+.sp-tog[aria-pressed="true"]{background:var(--sp-page);color:var(--sp-ink);font-weight:700}
+.sp-cols{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px;align-items:start}
+.sp-cols[hidden],.sp-read[hidden]{display:none}
+.sp-book,.sp-sheet{min-width:0}
+.sp-tabs{display:flex;gap:4px;padding:0 10px;align-items:flex-end;overflow-x:auto;scrollbar-width:thin}
+.sp-tab{flex:none;border:1px solid var(--sp-edge);border-bottom:0;background:var(--sp-desk);color:var(--sp-muted);border-radius:7px 7px 0 0;padding:6px 10px;font-size:.86rem;min-height:36px;white-space:nowrap;cursor:pointer}
+.sp-tab[aria-pressed="true"]{background:var(--sp-page);color:var(--sp-ink);font-weight:700;min-height:42px}
+.sp-own{flex:1 0 7rem;min-width:7rem;border:0;border-bottom:2px dotted var(--sp-edge);background:none;padding:7px 6px;font-size:.88rem;margin-left:6px}
+.sp-page{background-color:var(--sp-page);border:1px solid var(--sp-edge);border-radius:3px;position:relative;padding-bottom:var(--lh);min-height:calc(var(--lh) * 6);
+ box-shadow:0 1px 0 var(--sp-edge),3px 4px 0 -1px var(--sp-sheet),3px 4px 0 0 var(--sp-edge),6px 8px 0 -1px var(--sp-sheet),6px 8px 0 0 var(--sp-edge);
+ background-image:linear-gradient(var(--sp-margin),var(--sp-margin)),repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--lh) - 1px),var(--sp-line) calc(var(--lh) - 1px),var(--sp-line) var(--lh));
+ background-size:2px 100%,100% var(--lh);background-position:var(--mg) 0,0 var(--lh);background-repeat:no-repeat,repeat-y}
+.sp-title{font-family:var(--font-display);font-size:1.45rem;font-weight:600;margin:0;height:var(--lh);display:flex;align-items:center;padding:0 14px 0 calc(var(--mg) + 12px);min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.sp-rows{list-style:none;margin:0;padding:0}
+.sp-row,.sp-add{display:grid;grid-template-columns:var(--mg) minmax(0,1fr) auto;align-items:start;min-height:var(--lh);margin:0}
+.sp-add{align-items:center}
+.sp-row select{justify-self:end;margin:4px 10px 0 0;max-width:calc(var(--mg) - 16px);border:0;background:var(--hl);font-family:var(--font-display);font-size:.88rem;font-weight:500;padding:4px;border-radius:3px;height:36px;cursor:pointer}
+.sp-row textarea,.sp-add input{border:0;background:transparent;padding:0 12px;min-width:0;width:100%;font-size:1.15rem;box-shadow:none}
+.sp-add input{height:var(--lh)}
+.sp-row textarea{display:block;height:var(--lh);line-height:var(--lh);resize:none;overflow:hidden;white-space:pre-wrap;overflow-wrap:break-word}
+.sp-add input::placeholder{color:var(--sp-muted);opacity:1}
+.sp-del{border:0;background:none;color:var(--sp-muted);min-width:40px;height:var(--lh);font-size:1.15rem;cursor:pointer}
+.sp-nx{justify-self:end;margin-right:14px;font-family:var(--sp-hand);font-size:1.45rem;color:var(--sp-pen)}
+.sp-add .btn{margin-right:8px}
+.sp-ghost{display:grid;grid-template-columns:var(--mg) minmax(0,1fr);align-items:center;width:100%;min-height:var(--lh);border:0;background:none;padding:0;text-align:left;cursor:pointer}
+.sp-ghost .gl{justify-self:end;margin-right:10px;white-space:nowrap;font-family:var(--font-display);font-size:.82rem;font-weight:500;color:var(--sp-muted);border:2px dashed var(--c);border-radius:3px;padding:2px 7px}
+.sp-ghost .gt{padding:0 12px;color:var(--sp-muted);font-size:1.05rem;line-height:1.15}
+.sp-ghost .stt{font-family:var(--sp-hand);font-size:1.35rem;color:var(--c)}
+.sp-ghost.sel .gl{background:var(--hl);color:var(--sp-ink);border-style:solid}
+.sp-ghost.sel .gt,.sp-ghost:hover .gt{color:var(--sp-ink)}
+.sp[data-fade="2"] .stt,.sp[data-fade="3"] .stt,.sp[data-fade="3"] .sp-ghost .q{display:none}
+.sp[data-fade="4"] .sp-ghosts{display:none}
+.sp-sheet{display:flex;flex-direction:column;gap:12px;padding-top:6px}
+.sp-stks{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px 4px}
+.sp-stk{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;font-size:.8rem;color:var(--sp-muted)}
+.sp-stk .disc{width:50px;height:50px;border-radius:50%;border:2px dashed var(--sp-edge);display:grid;place-items:center}
+.sp-stk .disc svg{width:26px;height:26px;stroke:var(--sp-edge);fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.sp-stk.on{color:var(--sp-ink);font-weight:700}
+.sp-stk.on .disc{background:var(--c);border:3px solid var(--sp-page);box-shadow:0 0 0 1px var(--sp-edge),2px 3px 0 var(--sp-shadow);rotate:var(--r)}
+.sp-stk.on .disc svg{stroke:var(--sp-page)}
+.sp-pen{font-family:var(--sp-hand);font-size:1.55rem;line-height:1.15;color:var(--sp-pen);margin:0;rotate:-1deg;transform-origin:left}
+.sp-clin{background:var(--sp-manila);padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;font-size:.92rem;rotate:.4deg;box-shadow:2px 3px 0 var(--sp-shadow)}
+.sp-clin h4{font-family:var(--font-display);font-size:.98rem;font-weight:600;margin:0}
+.sp-clin p{margin:0}
+.sp-clin ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 12px}
+.sp-clin li.no{opacity:.72}
+.sp-clin .sm{font-size:.84rem}
+.sp-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px}
+.sp-count{font-family:var(--font-display);margin-right:4px}
+.sp-count b{font-size:1.5rem;font-weight:600;font-variant-numeric:tabular-nums}
+.sp-goes{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+.sp-go{border:1px solid var(--sp-edge);background:var(--sp-page);border-radius:3px;padding:4px 9px;font-size:.84rem;min-height:36px;cursor:pointer}
+.sp-read{display:flex;flex-direction:column;gap:14px;max-width:820px;width:100%;margin:0 auto}
+.sp-read .sp-page{--lh:54px;--mg:4.5rem;padding-bottom:calc(var(--lh) * 2)}
+.sp-read p{font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:var(--lh);margin:0;padding:0 20px 0 calc(var(--mg) + 14px);overflow-wrap:break-word}
+body.sp-solo{overflow:hidden}
+body.sp-solo .sp{position:fixed;inset:0;z-index:80;overflow:auto;border-radius:0;padding:18px clamp(14px,3vw,36px)}
+body.sp-solo .sp-noshow{display:none}
+@media (max-width:860px){.sp-cols{grid-template-columns:minmax(0,1fr)}.sp-goes{margin-left:0;width:100%}}
+@media (max-width:520px){.sp{--mg:6rem;--lh:48px;padding:10px}.sp-help span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+ .sp-row textarea,.sp-add input{font-size:1.05rem;padding:0 8px}.sp-row select{font-size:.78rem;margin-right:6px}.sp-title{font-size:1.25rem}
+ .sp-ghost{min-height:calc(var(--lh) * 2)}.sp-ghost .gt{font-size:1rem;padding:0 8px;line-height:var(--lh);display:flex;flex-direction:column}.sp-ghost .gt .q,.sp-ghost .gt .stt{height:var(--lh);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+ .sp[data-fade="2"] .sp-ghost,.sp[data-fade="3"] .sp-ghost{min-height:var(--lh)}
+ .sp-stks{grid-template-columns:repeat(3,minmax(0,1fr))}.sp-clin ul{grid-template-columns:minmax(0,1fr)}.sp-read .sp-page{--lh:46px;--mg:1.2rem}}
+@media (prefers-reduced-motion:no-preference){.sp-stk.new .disc{animation:sp-pop .3s ease-out}}
+@keyframes sp-pop{from{scale:1.35}to{scale:1}}
+/* host resets: the page sits inside a protocol panel, so undo its list and field styles */
+.sp ol,.sp ul{display:block;margin:0;padding:0;gap:0}
+.sp li{padding:0}
+.sp .sp-stks{display:grid}
+.sp .sp-clin ul{display:grid}
+.sp .sp-row textarea,.sp .sp-add input,.sp .sp-own{min-height:0;border-radius:0;background:transparent;box-shadow:none;margin-top:0;margin-bottom:0}
+.sp .sp-row textarea,.sp .sp-add input{border:0}
+.sp .sp-row textarea{height:var(--lh)}
+.sp .sp-row select{min-height:0;width:auto;box-shadow:none}
+.sp .sp-title{color:var(--sp-ink)}
+.sp a{color:inherit}
+.sp .sp-own{border:0;border-bottom:2px dotted var(--sp-edge);padding:7px 6px}
+.sp .sp-foot{margin-top:6px}
 </style>
 </head><body>
 
 <header class="top">
-  <div class="logo" aria-hidden="true">S</div>
-  <h1>Story Compass</h1>
+  <div class="logo" aria-hidden="true">M</div>
+  <h1>Mind Your Language</h1>
   <span class="save" id="saveState">Loading…</span>
 </header>
 
@@ -657,7 +813,7 @@ details.proto[open]>summary{margin-bottom:var(--space-2xs)}
     <select id="clientSel" aria-label="Client"></select>
     <button class="btn pri" id="addClient">New client</button>
     <span class="cap">Steps</span>
-    <nav class="snav" id="stepNav" role="tablist"></nav>
+    <div class="steprow"><nav class="snav" id="stepNav" role="tablist"></nav><button class="steptog" id="stepTog" aria-expanded="false">Show names</button></div>
     <p class="mini" id="storeNote"></p>
   </aside>
   <main class="pane" id="pane"></main>
@@ -803,7 +959,7 @@ const GENRES = {
   prompts:{"6-8":"Share a short story of your own first, or read a trigger book, then ask “Has anything like that ever happened to you?” Follow up only with “Tell me more” and “What else happened?”",
    "9-12":"Emotion prompts: “Tell me about a time you felt proud / worried / annoyed.” Share your own first if needed. Keep follow-ups neutral.",
    "teen":"“Tell me about a time something didn’t go to plan,” or a turning point (first job, falling out with a friend). Keep follow-ups neutral."},
-  refs:["peterson","westerveldHPA","bliss","westby","mccabe","wang","gabaj"],
+  refs:["peterson","westerveldHPA","wg2002","bliss","westby","mccabe","wang","gabaj"],
   items:[
    {id:"topic",t:1,label:"Stays on topic",q:"Sticks to one experience without drifting",vis:"Personal story map: Topic box",how:"Pick one event together, write or draw it in the topic box, and point back to it when they drift."},
    {id:"info",t:1,label:"Enough info for the listener",q:"Who, when and where, so an unfamiliar listener can follow",vis:"Who / when / where cards",how:"Play the unfamiliar listener: “I wasn’t there, who was with you?” Fade the cards as they start including it."},
@@ -1067,6 +1223,7 @@ const REFS = {
   petersen2022:{cite:"Petersen, D. B., Staskowski, M., Spencer, T. D., Foster, M. E., & Brough, M. P. (2022). The effects of a multitiered system of language support on kindergarten oral and written language: A large-scale randomized controlled trial. <i>Language, Speech, and Hearing Services in Schools, 53</i>(1), 44–68.",why:"Story Champs RCT: oral and written language gains"},
   spencer2024:{cite:"Spencer, T. D., Kirby, M. S., & Petersen, D. B. (2024). Vocabulary instruction embedded in narrative intervention: A repeated acquisition design study with first graders at risk of language-based reading difficulty. <i>American Journal of Speech-Language Pathology, 33</i>(1), 135–152.",why:"Story Champs: vocabulary within narrative intervention"},
   kirby2021:{cite:"Kirby, M. S., Spencer, T. D., & Chen, Y. I. (2021). Oral narrative instruction improves kindergarten writing. <i>Reading & Writing Quarterly, 37</i>(6), 574–591.",why:"Story Champs: oral narrative transfers to writing"},
+  wg2002:{cite:"Westerveld, M. F., & Gillon, G. T. (2002). <i>Language sampling protocol</i>. University of Canterbury. https://www.marleenwesterveld.com/wp-content/uploads/2017/04/WandGLanguageSamplingProtocol.pdf",why:"Personal narrative photo prompts and how to elicit them"},
   globaltales:{cite:"Westerveld, M. F., Lyons, R., Nelson, N. W., Chen, K. M., Claessen, M., Ferman, S., Fernandes, F. D. M., Gillon, G. T., Kawar, K., Kuvač Kraljević, J., Petinou, K., Theodorou, E., Tumanova, T., Vogandroukas, I., &amp; Westby, C. (2022). Global TALES feasibility study: Personal narratives in 10-year-old children around the world. <i>PLoS ONE, 17</i>(8), e0273114. https://doi.org/10.1371/journal.pone.0273114",why:"Global TALES personal narrative protocol (S5 Appendix)"},
   kknight:{cite:"Knight, K. (2025). <i>Conjunctions and story grammar</i> [Instagram carousel]. @kknighttherapy.",why:"Pairing story grammar elements with conjunctions",check:true},
   vagin:{cite:"Vagin, A. (2021). <i>Conversation Paths Pack</i> [Clinical resource, CPPEV rubrics]. Full reference to confirm.",why:"Conversation skills rubrics",check:true}
@@ -1399,36 +1556,141 @@ function bindCk(c,el,rerender){
     c.goals=c.goals.concat([{id:uid(),g,item:"__ck",text,lt:`${nm} will ${LONGTERM[g]}.`,tries:[],from:"checklist"}]); c.goalsTouched=true; persist(c);
     b.textContent="Added to Plan ✓"; });
 }
-function persuadeHTML(){ const pp="https://www.marleenwesterveld.com/wp-content/uploads/2020/04/Heilmann-Malone-Westerveld-Post-Print-version-2020.pdf";
- return `<details class="tales proto"><summary><b>Persuasive sampling protocol</b> <span class="agetag">Standard protocol · Year 8–12</span></summary>
-  <p>Argue for changing a rule at school, work or in the community, to the person who could change it (principal, boss, government official). Typical data from 179 students in Year 8–12 in the US and Queensland are built into SALT.</p>
-  <details><summary>How to run it (~20 min)</summary><ol>
-    <li><b>Pick an issue</b> from a list, or their own. Tell them you expect them to talk for at least a few minutes, so they should pick an issue they know and care about.</li>
-    <li><b>Plan</b> on a sheet with 6 parts: issue and the change they want, supporting reasons, the other point of view, their response to it, compromises, conclusion. Key words or a diagram, not sentences. Read the sheet aloud if needed, because reading isn’t being tested. Scribe or give extra time if writing is hard.</li>
-    <li><b>Record.</b> Your role is affirmations only (“uh-huh”, “mhm”, “I see”, “OK”). Don’t debate them.</li>
-    <li><b>Allowed prompts:</b> “Is there anything else you can tell me?”, “What about [missing part]?”, “Please do some planning for [missing part].”</li></ol></details>
-  <details><summary>How to score it</summary><ul>
+const protoOpen=new Set();
+document.addEventListener("toggle",e=>{ const d=e.target; if(d&&d.dataset&&d.dataset.proto){ d.open?protoOpen.add(d.dataset.proto):protoOpen.delete(d.dataset.proto); } },true);
+const po=id=>`data-proto="${id}" ${protoOpen.has(id)?"open":""}`;
+const PS_TOPICS=["Changing the time school starts in the morning","Allowing students to leave campus during the school day without special permission","Requiring students to do graded homework","Requiring students to take foreign language classes","Allowing teachers to socialise with students on social networks","Including grades in physical education classes in students’ grade point average","Allowing students to listen to their music using headphones during free periods","Changing the access teenagers have to entertainment that is violent or sexually suggestive (movies, music, video games)","Requiring school uniforms or a dress code for students","Awarding cash or other incentives to students who earn good grades","Replacing traditional textbooks with notebook computers or digital materials","Requiring cities to provide free wireless internet access in public spaces","Requiring people to get a licence in order to become parents","Allowing alternatives to jail, such as counselling or public service, for convicted criminals","Requiring colleges to pay their student athletes a salary for playing","Requiring drug tests for professional athletes","Allowing employers to require drug tests as part of their hiring procedure","Requiring workers to pay for their own work uniforms or equipment","Raising the minimum wage","Changing the minimum age for voting, drinking, driving or holding a job","Other: a topic of their choice"];
+const PS_PLAN=[["Issue and desired change","What rule or situation do you want changed? What would you change it to?"],["Supporting reasons","What facts, values or evidence help your side? Include how the change would help the listener or people the listener cares about."],["Counter arguments","What are some good reasons on the other side?"],["Response to counter arguments","What can you say to knock down or weaken those reasons? Which can you agree with, in whole or in part?"],["Compromises","If you can’t get your way 100%, what deals would be acceptable so each side wins a little?"],["Conclusion","Briefly sum up: what do you want, why, and what are the first steps to make it happen?"]];
+function persuadeHTML(){ const pp="https://www.marleenwesterveld.com/wp-content/uploads/2020/04/Heilmann-Malone-Westerveld-Post-Print-version-2020.pdf", pr="https://marleenwesterveld.com/wp-content/uploads/2017/05/PersElicitationProtocol.pdf";
+ return `<details class="tales proto" ${po("persuade")}><summary><b>Persuasive sampling protocol</b> <span class="agetag">Standard protocol · Year 8–12</span></summary>
+  <div class="pbody"><p class="plead">The student argues for changing a rule at school, work or in the community, to the person who could change it (principal, boss, government official). Typical data from 179 students in Year 8–12 in the US and Queensland are built into SALT.</p>
+  <div class="pcols">
+   <section><h3>Running it (about 20 minutes)</h3><ol>
+    <li><b>Introduce.</b> “Today I want to find out how well you can persuade.” Say you’ll make a recording.</li>
+    <li><b>Pick an issue</b> from the topics list or their own. “I expect you to talk for at least a few minutes, so be sure to pick an issue you know and care about.”</li>
+    <li><b>Name the listener.</b> “Who will you be trying to persuade?” Then: “Talk to me as if I’m your [principal, boss, senator].”</li>
+    <li><b>Plan</b> on the 6-part sheet. “Don’t waste time writing sentences. Just jot down some key words.” Read the sheet aloud if needed; reading isn’t being tested. Missed a part? “Please do some planning for [that part].”</li>
+    <li><b>Record.</b> “When I turn on the recorder, you will be doing all the talking.” They can look at their sheet. Expect 3 to 4 minutes.</li>
+    <li><b>While they talk,</b> only nod or say “uh-huh”, “mhm”, “I see”, “OK”. Don’t debate, question or add information.</li>
+    <li><b>If they stop early:</b> “Is there anything else you can tell me?” No answer ends the task.</li></ol></section>
+   <section><h3>The planning sheet: 6 parts</h3><ol>${PS_PLAN.map(([t,q])=>`<li><b>${t}.</b> ${q}</li>`).join("")}</ol>
+    <details class="pin"><summary>The 20 topics students can pick from</summary><ol>${PS_TOPICS.map(t=>`<li>${t}</li>`).join("")}</ol><p class="mini">From the SALT protocol (US wording, lightly localised). Swap in local equivalents where a topic doesn’t fit.</p></details></section>
+   <section><h3>Scoring</h3><ul>
     <li><b>Microstructure</b> (SALT, C-units): mean length of C-unit, clausal density, vocabulary diversity (MATTR), % mazes, % C-units with errors.</li>
-    <li><b>Persuasion Scoring Scheme:</b> rate 7 features from 1 to 5 (1 minimal, 3 adequate, 5 proficient): issue and desired change, supporting reasons, other point of view, compromises, conclusion, cohesion, effectiveness.</li></ul></details>
-  <details><summary>Typical Year 8–12 (don’t over-read errors)</summary><ul>
+    <li><b>Persuasion Scoring Scheme:</b> rate 7 features from 1 to 5 (1 minimal, 3 adequate, 5 proficient): issue and desired change, supporting reasons, other point of view, compromises, conclusion, cohesion, effectiveness.</li></ul>
+    <h3>Typical Year 8–12</h3><ul>
     <li>About <b>29 C-units in 3½ minutes</b>.</li>
-    <li>Mean length of C-unit about <b>16 words</b>. Clausal density about <b>2.0</b>, so most C-units have a dependent clause.</li>
+    <li>Mean length of C-unit about <b>16 words</b>; clausal density about <b>2.0</b>.</li>
     <li>About <b>1 in 5 C-units has an error</b>, mostly in long sentences. That’s typical, not a red flag on its own.</li>
     <li>Year level made little difference, so treat Year 8–12 as one band.</li>
-    <li>No data yet for students with language disorder; the authors expect shorter samples, which can itself be informative.</li></ul></details>
-  <p><a href="https://doi.org/10.1044/2019_LSHSS-19-00078">Journal article</a> · <a href="${pp}">Free post-print</a></p>
-  <p class="mini" style="color:inherit">Link won’t open? <button class="btn sm copylink" data-url="${pp}">Copy post-print link</button></p></details>`; }
-function talesHTML(){ return `<details class="tales proto"><summary><b>Global TALES</b> <span class="agetag">Standard protocol</span></summary>
-  <p>6 scripted prompts, read aloud in a fixed order and shown on a card or tablet. Same wording every time, so samples compare across kids, languages and re-tests.</p>
-  <details><summary>How to run it</summary><ol>
+    <li>No data yet for students with language disorder.</li></ul>
+    <p><a href="${pr}">Protocol (SALT, 2016)</a><br><a href="https://doi.org/10.1044/2019_LSHSS-19-00078">Journal article</a><br><a href="${pp}">Free post-print</a></p>
+    <p class="mini">Link won’t open? <button class="btn sm copylink" data-url="${pr}">Copy protocol link</button></p></section>
+  </div></div></details>`; }
+function talesHTML(){ return `<details class="tales proto" ${po("tales")}><summary><b>Global TALES</b> <span class="agetag">Standard protocol</span></summary>
+  <div class="pbody"><p class="plead">6 scripted prompts, read aloud in a fixed order and shown on a card or tablet. The wording is the same every time, so samples compare across kids, languages and re-tests.</p>
+  <div class="pcols">
+   <section><h3>The 6 prompts, in order</h3><ol>
+    <li><b>Excited or happy.</b> “Can you think of a time when you felt excited or really happy?”</li>
+    <li><b>Worried or confused</b></li><li><b>Annoyed or angry</b></li><li><b>Proud</b></li>
+    <li><b>A problem,</b> and how it was solved</li><li><b>Something important</b> to them</li></ol>
+    <p class="mini">Only prompt 1 is quoted here. Read the others from the protocol so the wording is exact.</p></section>
+   <section><h3>Running it</h3><ol>
     <li>Explain the task: you’ll ask about times they felt different ways, and they tell you a story about each.</li>
-    <li>Prompts in order: <b>excited or happy</b> (“Can you think of a time when you felt excited or really happy?”), <b>worried or confused</b>, <b>annoyed or angry</b>, <b>proud</b>, <b>a problem</b> and how it was solved, <b>something important</b> to them.</li>
-    <li>If they say yes, ask them to tell you about it. If no, use the protocol’s scripted follow-up prompt.</li>
-    <li>Short story? Only neutral prompts: “Can you tell me more?”, “Is there anything else you can tell me?”, or “uh-huh”.</li>
-    <li>Audio-record, transcribe later (the study used SALT, C-units), then score with the checklist and high point analysis.</li></ol>
-    <p class="mini" style="color:inherit">Developed with 9;6–10;11-year-olds; intended for school-age children. Use the exact wording from the protocol.</p></details>
-  <p><a href="https://doi.org/10.1371/journal.pone.0273114">Open the paper (protocol in S5 Appendix)</a> · <a href="https://osf.io/ztqg6/wiki">OSF translations</a></p>
-  <p class="mini" style="color:inherit">Link won’t open? <span class="selurl">doi.org/10.1371/journal.pone.0273114</span> <button class="btn sm copylink" data-url="https://doi.org/10.1371/journal.pone.0273114">Copy link</button></p></details>`; }
+    <li>Read each prompt aloud and show it on a card or tablet.</li>
+    <li><b>Yes:</b> ask them to tell you about it. <b>No:</b> use the protocol’s scripted follow-up.</li>
+    <li><b>Short story?</b> Neutral prompts only: “Can you tell me more?”, “Is there anything else you can tell me?”, “uh-huh”.</li>
+    <li>Audio-record and transcribe later, then score with the checklist and high point analysis.</li></ol></section>
+   <section><h3>Good to know</h3><ul>
+    <li>Developed with children aged 9;6 to 10;11; intended for school-age children.</li>
+    <li>The study transcribed in SALT, using C-units.</li>
+    <li>Translated into many languages.</li></ul>
+    <p><a href="https://doi.org/10.1371/journal.pone.0273114">Open the paper (protocol in S5 Appendix)</a><br><a href="https://osf.io/ztqg6/wiki">OSF translations</a></p>
+    <p class="mini">Link won’t open? <span class="selurl">doi.org/10.1371/journal.pone.0273114</span> <button class="btn sm copylink" data-url="https://doi.org/10.1371/journal.pone.0273114">Copy link</button></p></section>
+  </div></div></details>`; }
+/* personal narrative photo prompts (Westerveld & Gillon). Photos: Australian set. Script wording: NZ protocol, 2002. */
+const PN=[
+ {f:"01-mcdonalds",w:1100,h:733,t:"McDonald’s",alt:"A McDonald’s restaurant and car park",say:"Oh look where’s this? (McDonald’s.) I went to a birthday party at McDonald’s last year.",ask:"Have you ever been to McDonald’s?"},
+ {f:"02-beach",w:1100,h:731,t:"Beach",alt:"Children and teenagers exploring rock pools at low tide",say:"We went to the beach in the holidays. These children dug a big hole in the sand and waited for the sea to fill it up.",ask:"Have you been to the beach? What happened last time you went to the beach?"},
+ {f:"03-doctor",w:734,h:1100,t:"Doctor",alt:"A doctor with a stethoscope smiling at a young child",say:"This little boy had to go to the Doctor, cause he had a sore tummy.",ask:"Have you ever been to the Doctor’s?",note:"The sheet says “girl/boy”. This photo shows a boy."},
+ {f:"04-plane",w:713,h:473,t:"Plane trip",alt:"People at an airport window watching a plane",say:"These friends are watching somebody arriving on a big plane.",ask:"Have you ever been on a plane?",no:"Have you ever been out to the airport to watch the planes?"},
+ {f:"05-playground",w:713,h:530,t:"Sickbay",alt:"Two girls in school uniform in a playground; one has a plaster on her knee",say:"Oh look, this girl fell off the bars and hurt her knee. She had to go to the sick-bay and they put a plaster on.",ask:"Have you ever broken anything?",no:"Did you ever hurt yourself in the playground?"},
+ {f:"06-waterslide",w:1100,h:825,t:"School trip (older children)",alt:"Large blue and green water slides at a water park",say:"These children went on a school-trip. They all went on a bus to Wet ’n Wild.",ask:"Have you ever been on a school-trip?",note:"One prompt, two photos: use this one for older children, or the zoo. Not both."},
+ {f:"07-zoo",w:1100,h:825,t:"School trip (zoo)",alt:"School children with backpacks looking into a kangaroo enclosure",say:"These children went on a school-trip. They all went on a bus to the Zoo.",ask:"Have you ever been on a school-trip?",note:"One prompt, two photos: use this one, or Wet ’n Wild for older children. Not both."},
+ {f:"08-bee",w:1100,h:825,t:"Bee sting",alt:"A bee on a red flower among green leaves",say:"Can you see the bumble bee on the flower? I got stung by a bee once. On my big toe!",ask:"Did a bee ever sting you?"},
+ {f:"09-santa",w:1100,h:682,t:"Santa",alt:"Santa waving from the window of a red fire engine",say:"Look, this is Santa. He visited my daughter’s school in a fire engine.",ask:"Has Santa ever been to your school?",no:"Have you ever seen Santa anywhere?"},
+ {f:"10-dentist",w:700,h:550,t:"Dental nurse",alt:"A dentist in a mask checking a child’s teeth",say:"The dental nurse visited my daughter’s school last year. All the children had to go for a check-up.",ask:"Have you ever had a tooth-ache?",no:"Have you ever been to the dental nurse?"},
+ {f:"12-play",w:1100,h:706,t:"Play",alt:"Children in costume on stage and in front of it at a school play, with a Pied Piper Street sign",say:"Look, there’s my daughter / niece / nephew. She was in a play at her school. They did the pied piper. All the children had to dress up and perform in the school hall.",ask:"Have you ever been in a play?",no:"Have you ever seen a play?"},
+ {f:"11-movies",w:1100,h:733,t:"Movies",alt:"The foyer of a cinema with stairs and posters",say:"We went to the movies in the holidays.",ask:"Have you ever been to the Movies? Which one did you go to?",then:"Oh, I didn’t see that one. Can you tell me about it?"},
+ {f:"13-accident",w:1100,h:711,t:"Accident",alt:"A silver car with a dented front wing and bonnet",say:"I had a small accident with my car. Someone bumped into me and made a big dent in my bonnet.",ask:"Have you ever been in an accident?",no:"Have you ever seen an accident?"}
+];
+let pnIdx=0;
+const pnT={on:false,t0:0,acc:0};
+const pnSecs=()=>Math.floor((pnT.acc+(pnT.on?Date.now()-pnT.t0:0))/1000);
+const pnClock=()=>{ const n=pnSecs(); return Math.floor(n/60)+":"+String(n%60).padStart(2,"0"); };
+setInterval(()=>{ if(pnT.on) document.querySelectorAll(".pntime").forEach(e=>{ e.textContent=pnClock(); e.classList.toggle("over",pnSecs()>=600); }); },1000);
+function pnRec(c,k,make){ if(!c) return {ck:[],u:0}; c.pn=c.pn||{}; if(!c.pn[k]&&make) c.pn[k]={st:"",ck:[],u:0}; return c.pn[k]||{ck:[],u:0}; }
+function pnTotals(c){ const v=Object.values((c&&c.pn)||{}); return {n:v.filter(r=>r.st==="yes").length,u:v.reduce((a,r)=>a+(r.u||0),0)}; }
+function pnScore(c,x){ if(!c) return ""; const r=pnRec(c,x.t), its=ckItems(c,"personal"), tot=pnTotals(c), act=its.filter(i=>i.ok);
+  const best=Object.values(c.pn||{}).filter(r=>r.st==="yes").reduce((m,r)=>Math.max(m,r.ck.filter(id=>act.some(i=>i.id===id)).length),-1);
+  return `<div class="pnsc"><div class="pnst" role="group" aria-label="Did they have a story?"><button class="btn sm ${r.st==="no"?"on":""}" data-pna="no" aria-pressed="${r.st==="no"}">No story</button><button class="btn sm ${r.st==="yes"?"on":""}" data-pna="yes" aria-pressed="${r.st==="yes"}">Got a story</button></div>
+    <div class="pnck">${its.map(i=>`<button class="cki ${r.ck.includes(i.id)?"on":""} ${i.ok?"":"nyet"}" data-pnck="${i.id}" aria-pressed="${r.ck.includes(i.id)}" ${i.ok?"":'aria-disabled="true"'}><span class="ckb" aria-hidden="true"></span><span>${esc(i.l.split(":")[0])}</span></button>`).join("")}</div>
+    <div class="pnut"><span>Utterances in this story</span><button class="btn sm" data-pna="u-" aria-label="One fewer utterance" ${r.u?"":"disabled"}>−</button><b>${r.u||0}</b><button class="btn sm pri pnplus" data-pna="u+" aria-label="Add an utterance">+ 1</button></div></div>
+   <div class="pnsum"><span><b>${tot.n}</b> ${tot.n===1?"story":"stories"}</span><span><b>${tot.u}</b>/50 utterances</span><span><b class="pntime ${pnSecs()>=600?"over":""}">${pnClock()}</b> of 10:00</span>
+    <button class="btn sm" data-pna="timer">${pnT.on?"Pause":pnSecs()?"Resume":"Start timer"}</button><span class="pnsp"></span>
+    <button class="btn sm pri" data-pna="log" ${best<0?"disabled":""}>Log best story${best<0?"":` ${best}/${act.length}`}</button><button class="btn sm" data-pna="reset" ${Object.keys(c.pn||{}).length||pnSecs()?"":"disabled"}>Clear</button></div>`; }
+function pnView(){ const x=PN[pnIdx], c=(typeof cur==="function")?cur():null, sc=pnScore(c,x), i0=sc.indexOf('<div class="pnsum">');
+  return `<figure class="pnfig">${x.f?`<img src="pn/${x.f}.jpg" alt="${esc(x.alt)}" width="${x.w}" height="${x.h}" loading="lazy">`:`<p class="pnnone">No photo for this prompt</p>`}</figure>
+   <div class="pnside"><div class="pnhead"><h3>${pnIdx+1}. ${esc(x.t)}</h3><span class="pnnav"><button class="btn sm" data-pn="prev" ${pnIdx===0?"disabled":""}>Back</button><button class="btn sm pri" data-pn="next" ${pnIdx===PN.length-1?"disabled":""}>Next</button><button class="btn sm" data-pn="show" ${x.f?"":"disabled"}>Show to child</button></span></div>
+    ${x.say?`<p class="pnsay">“${esc(x.say)}”</p>`:""}
+    <p><b>Ask:</b> “${esc(x.ask)}”${x.no?` <b>If no:</b> “${esc(x.no)}”`:""}${x.then?` <b>Then say:</b> “${esc(x.then)}”`:""}</p>
+    ${x.note?`<p class="pnnote">${esc(x.note)}</p>`:""}
+    ${c?sc.slice(0,i0):`<p class="pnyn"><b>Yes:</b> “Can you tell me about it?” <b>No:</b> next prompt.</p>`}</div>${c?sc.slice(i0):""}`; }
+const pnDraw=()=>document.querySelectorAll(".pnv").forEach(v=>v.innerHTML=pnView());
+document.addEventListener("click",e=>{ const t=e.target.closest&&e.target.closest("[data-pna],[data-pnck]"); if(!t||t.getAttribute("aria-disabled")) return; const c=cur(); if(!c) return;
+  const k=PN[pnIdx].t, a=t.dataset.pna;
+  if(t.dataset.pnck){ const r=pnRec(c,k,true), id=t.dataset.pnck; r.ck=r.ck.includes(id)?r.ck.filter(z=>z!==id):r.ck.concat([id]); r.st="yes"; }
+  else if(a==="yes"||a==="no"){ const r=pnRec(c,k,true); r.st=r.st===a?"":a; if(a==="yes"&&!pnT.on&&!pnSecs()){ pnT.on=true; pnT.t0=Date.now(); } }
+  else if(a==="u+"){ const r=pnRec(c,k,true); r.u=(r.u||0)+1; r.st="yes"; if(!pnT.on&&!pnSecs()){ pnT.on=true; pnT.t0=Date.now(); } }
+  else if(a==="u-"){ const r=pnRec(c,k,true); r.u=Math.max(0,(r.u||0)-1); }
+  else if(a==="timer"){ if(pnT.on){ pnT.acc+=Date.now()-pnT.t0; pnT.on=false; } else { pnT.on=true; pnT.t0=Date.now(); } pnDraw(); return; }
+  else if(a==="reset"){ c.pn={}; pnT.on=false; pnT.acc=0; }
+  else if(a==="log"){ const act=ckItems(c,"personal").filter(i=>i.ok), tot=pnTotals(c);
+    const n=Object.values(c.pn||{}).filter(r=>r.st==="yes").reduce((m,r)=>Math.max(m,r.ck.filter(id=>act.some(i=>i.id===id)).length),0);
+    c.ckLog=Object.assign({},c.ckLog,{personal:((c.ckLog||{}).personal||[]).concat([{d:new Date().toLocaleDateString("en-AU",{day:"numeric",month:"short"}),n,t:act.length}])});
+    const note=`Photo prompts ${new Date().toLocaleDateString("en-AU")}: ${tot.n} ${tot.n===1?"story":"stories"}, ${tot.u} utterances${pnSecs()?`, ${pnClock()} min`:""}. Best story ${n}/${act.length}. `+Object.entries(c.pn).filter(([,r])=>r.st==="yes").map(([t,r])=>`${t} ${r.ck.filter(id=>act.some(i=>i.id===id)).length}/${act.length}`).join("; ")+".";
+    c.sampleNotes=c.sampleNotes||{}; c.sampleNotes.personal=((c.sampleNotes.personal||"").trim()?c.sampleNotes.personal.trim()+"\n":"")+note;
+    c.pn={}; if(pnT.on){ pnT.acc+=Date.now()-pnT.t0; } pnT.on=false; pnT.acc=0; persist(c); renderPane(); return; }
+  persist(c); pnDraw(); });
+function photoHTML(){ return `<details class="tales proto" ${po("photos")}><summary><b>Photo prompts</b> <span class="agetag">Westerveld &amp; Gillon · Australian set</span></summary>
+  <div class="pbody"><p class="plead">Show a photo, tell a one-line story of your own, then ask if anything like that has happened to them. Give a story to get a story.</p>
+   <div class="pnv">${pnView()}</div>
+   <div class="pcols">
+    <section><h3>Running it</h3><ol>
+     <li>Introduce: “I also brought some photos to show you.”</li>
+     <li>Work through the prompts. Aim for 50 complete and intelligible utterances, in 10 minutes at most.</li>
+     <li><b>Yes:</b> “Can you tell me about it?” or “What happened last time you…?”</li>
+     <li><b>No:</b> go to the next photo.</li>
+     <li>Record it, then transcribe.</li></ol></section>
+    <section><h3>To keep them going</h3><ul>
+     <li>Repeat their exact words when they pause.</li><li>“Uh-huh.”</li><li>“Tell me more.”</li><li>“And then what happened?”</li></ul>
+     <p><b>Don’t evaluate the story.</b> “Wow” or “That must have hurt” can cut it short.</p></section>
+    <section><h3>About this set</h3><ul>
+     <li>Photos and wording are the Australian set (2012). 13 prompts, 14 photos (School trip has two).</li>
+     <li>Some photos differ from the NZ ones to fit local culture. That’s fine as long as you keep to the type of prompt and don’t evaluate.</li>
+     <li>The NZ database covers children aged 4;6 to 7;6.</li></ul>
+     <p><a href="https://www.marleenwesterveld.com/wp-content/uploads/2017/04/WandGLanguageSamplingProtocol.pdf">Protocol (Westerveld &amp; Gillon, 2002)</a><br><a href="https://marleenwesterveld.com/language-sampling/">All free protocols and the instruction video</a></p></section>
+   </div></div></details>`; }
+function pnShow(on){ let o=$("pnOver");
+  if(!on){ if(o) o.hidden=true; return; }
+  if(!o){ o=document.createElement("div"); o.id="pnOver"; o.setAttribute("role","dialog"); o.setAttribute("aria-label","Photo for the child"); document.body.appendChild(o); }
+  const x=PN[pnIdx]; o.hidden=false;
+  o.innerHTML=`${x.f?`<img src="pn/${x.f}.jpg" alt="${esc(x.alt)}">`:`<p class="pnnone">No photo for this prompt</p>`}<div class="pnbar"><button class="btn sm" data-pn="prev" ${pnIdx===0?"disabled":""}>Back</button><span>${pnIdx+1} of ${PN.length}</span><button class="btn sm" data-pn="next" ${pnIdx===PN.length-1?"disabled":""}>Next</button><button class="btn sm" data-pn="close">Close</button></div>`;
+  o.querySelector('[data-pn="close"]').focus(); }
+document.addEventListener("click",e=>{ const b=e.target.closest&&e.target.closest("[data-pn]"); if(!b) return; const a=b.dataset.pn, over=$("pnOver")&&!$("pnOver").hidden;
+  if(a==="prev"&&pnIdx>0) pnIdx--; else if(a==="next"&&pnIdx<PN.length-1) pnIdx++; else if(a==="show"){ pnShow(true); return; } else if(a==="close"){ pnShow(false); }
+  pnDraw(); if(over&&a!=="close") pnShow(true); });
+document.addEventListener("keydown",e=>{ const o=$("pnOver"); if(!o||o.hidden) return; if(e.key==="Escape") pnShow(false); else if(e.key==="ArrowRight"&&pnIdx<PN.length-1){ pnIdx++; pnShow(true); } else if(e.key==="ArrowLeft"&&pnIdx>0){ pnIdx--; pnShow(true); } else return; document.querySelectorAll(".pnv").forEach(v=>v.innerHTML=pnView()); });
 document.addEventListener("click",e=>{ const b=e.target.closest&&e.target.closest(".copylink"); if(!b) return; const u=b.dataset.url;
   try{ navigator.clipboard.writeText(u).then(()=>{ b.textContent="Copied"; },()=>{ b.textContent=u; }); }catch(err){ b.textContent=u; } });
 const openInfo=new Set();
@@ -1613,7 +1875,7 @@ function renderAssess(c,el){
     return;
   }
   const g=tab, G=GENRES[g], main=G.items.filter(i=>!i.pa), pa=G.items.filter(i=>i.pa);
-  el.innerHTML=tabs+`<div class="ascols g-${g}">
+  el.innerHTML=tabs+`${g==="personal"||g==="opinion"?`<div class="protorow g-${g}">${g==="personal"?photoHTML()+talesHTML():persuadeHTML()}</div>`:""}<div class="ascols g-${g}">
     <div class="ascol">
       <section class="card">
         <span class="lbl2">${esc(G.blurb)}</span>
@@ -1621,7 +1883,6 @@ function renderAssess(c,el){
         <details class="elicit"><summary>More ideas</summary><div class="detg">
           <div><span class="k">${c.band==="teen"?"Teens":"Ideas"}</span><ul>${(c.band==="teen"?ELICIT[g].teen.concat(ELICIT[g].young):ELICIT[g].young.concat(ELICIT[g].teen.map(t=>"Older kids: "+t))).map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div>
           <div><span class="k">Any genre</span><ul>${ELICIT_TIPS.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div></div></details>`:""}
-        ${g==="personal"?talesHTML():g==="opinion"?persuadeHTML():""}
       </section>
       ${g==="opinion"?psHTML(c):""}
       ${ckHTML(c,g)}
@@ -1810,6 +2071,163 @@ function renderPlan(c,el){
 }
 
 /* ---------- 4 in session ---------- */
+/* ---- Story page: type the story in the child's order, see what it has ---- */
+(function(){
+const SV={who:'<circle cx="32" cy="22" r="10"/><path d="M12 56c0-12 9-18 20-18s20 6 20 18"/>',where:'<path d="M32 8c-10 0-18 8-18 18 0 14 18 30 18 30s18-16 18-30c0-10-8-18-18-18z"/><circle cx="32" cy="26" r="6"/>',when:'<circle cx="32" cy="32" r="24"/><path d="M32 18v14l10 6"/>',
+ events:'<rect x="6" y="24" width="14" height="14" rx="3"/><rect x="25" y="24" width="14" height="14" rx="3"/><rect x="44" y="24" width="14" height="14" rx="3"/><path d="M20 31h5M39 31h5"/>',high:'<path d="M32 6l7 16 17 2-13 12 4 18-15-9-15 9 4-18L8 24l17-2z"/>',
+ feel:'<path d="M32 54S8 40 8 24c0-8 6-13 12-13 5 0 9 3 12 8 3-5 7-8 12-8 6 0 12 5 12 13 0 16-24 30-24 30z"/>',why:'<path d="M22 24c0-6 4-10 10-10s10 4 10 10c0 8-10 8-10 16"/><circle cx="32" cy="50" r="2"/>',end:'<path d="M14 58V8"/><path d="M14 10h34l-8 11 8 11H14"/>',wrap:'<path d="M10 14h44v30H30L18 54V44h-8z"/>',
+ prob:'<path d="M32 8L58 54H6z"/><path d="M32 26v14"/><circle cx="32" cy="47" r="1.5"/>',act:'<path d="M8 32h40"/><path d="M36 18l14 14-14 14"/>',smile:'<circle cx="32" cy="32" r="24"/><path d="M22 38c3 5 17 5 20 0"/><circle cx="24" cy="26" r="1.5"/><circle cx="40" cy="26" r="1.5"/>'};
+const FEEL=/\b(felt|feel|feeling|scared|happy|sad|angry|mad|excited|proud|annoyed|worried|nervous|embarrassed|cried|crying|laughed|upset|sore|hurt so|miss (him|her|them|it|you)|love[ds]?|hate[ds]?|tired|bored|hungry|sick|sleepy|grumpy|shy|lonely|(got|was|were|am|is|felt) (so|really|very|too|a bit) \w+|gosh|wow|ugh|phew|yay|oh no|omg|so (long|big|good|bad|fun|boring|cool|hard|funny|scary)|(was|it'?s|were) (awesome|great|fun|boring|terrible|horrible|the best|the worst|amazing|cool|scary|funny))\b/i;
+const WHO=/\b(me and|my (mum|mom|dad|brother|sister|friend|friends|nan|nanna|grandma|grandpa|pop|cousin|teacher|dog|family)|with my|we\b|(mum|dad) and)/i, WHO2=/\b(Mum|Mom|Dad|Nan|Nanna|Pop|Grandma|Grandpa)\b/;
+const WHERE=/\b(at (the|my|a|school|home)|went to|in the|to the|at [A-Z]|we were (at|in)|on the (bus|plane|beach|oval))/;
+const WHEN=/\b(yesterday|today|tonight|last (night|week|weekend|year|time|term)|(long )?weekend|(mon|tues|wednes|thurs|fri|satur|sun)day|this (morning|arvo|afternoon|week)|in the (morning|afternoon|holidays)|holidays|one day|once|when i was|at (lunch|recess|night)|my birthday|christmas|easter)\b/i;
+const WHY=/\b(because|cause|cos|so that|that'?s why)\b/i, END=/\b(in the end|at the end|finally|then we went home|went home|after that we left|and then it was (ok|okay|fine|over)|got better|happily ever after)\b/i;
+const WRAP=/\b(next time|now i|i learn(ed|t)|never again|that'?s why i|i still|i won'?t)\b/i, HIGH=/\b(best|worst|funniest|scariest|coolest) (bit|part|thing)|suddenly|all of a sudden|\b(fell|broke|bleeding|crashed|smashed|screamed|won|scored|stung|bit me|threw up)\b/i;
+const PROB=/\b(but|problem|lost|broke|stuck|couldn'?t|can'?t|oh no|uh oh|missing|trouble|fell)\b/i, ACT=/\b(so (he|she|they|it|the)|decided|tried|asked|went to (get|find|look)|looked for|plan|fixed|helped)\b/i, CHAR=/\b(once upon a time|there (was|were)|a (boy|girl|man|woman|dog|cat|bear|mouse|rabbit|frog|monster|dragon|princess|king|queen)|named|called)\b/i;
+const G={
+ personal:{label:"Story page",who:"his",topics:["Weekend news","Show and tell","Something funny","A time I got hurt","A time I was proud","My best day"],short:{"A time I got hurt":"Got hurt","A time I was proud":"Felt proud","My best day":"Best day","Something funny":"Funny"},
+  marks:[["who","Who",1,"Who was there?","“Me and my…”"],["where","Where",1,"Where were you?","“We were at…”"],["when","When",1,"When was it?","“On Saturday…”"],["events","What happened",2,"What happened first? And then?","“First… then…”"],["high","Big moment",3,"What was the best or worst bit?","“The worst part was…”"],["feel","Feeling",4,"How did you feel?","“I felt…”"],["why","Because",4,"Why did that happen?","“…because…”"],["end","Ending",5,"How did it finish?","“In the end…”"],["wrap","Wrap-up",5,"What do you think now?","“Next time I…”"]],
+  tags:[["open","Opener",3],["set","Setting",1],["event","Event",2],["high","Big moment",3],["feel","Feeling",4],["end","Ending",5],["wrap","Wrap-up",5]],
+  g2t:{who:"set",where:"set",when:"set",events:"event",high:"high",feel:"feel",why:"feel",end:"end",wrap:"wrap"},
+  ck:{or:"orientation",ord:"events_in_order",hp:"high_point",fe:"feelings",res:"resolution",ref:"reflection"},
+  patterns:["Classic","Ends at the high point","Leapfrog","Chronological","Two-event (impoverished)","One-event","Disoriented","Miscellaneous"],patLabel:"High point pattern",
+  guess(t,first){ if(first) return WHEN.test(t)?"set":"open"; if(WRAP.test(t)) return "wrap"; if(END.test(t)) return "end"; if(HIGH.test(t)) return "high"; if(FEEL.test(t)) return "feel"; if(WHEN.test(t)||WHERE.test(t)) return "set"; return "event"; },
+  has(rows){ const all=rows.map(r=>r.t).join(" . "), tag=k=>rows.some(r=>r.tag===k), ev=rows.filter(r=>r.tag==="event").length;
+   return {who:WHO.test(all)||WHO2.test(all),where:WHERE.test(all),when:WHEN.test(all),events:ev>=2||(ev>=1&&tag("open")),high:tag("high")||rows.some(r=>r.tag==="open"&&HIGH.test(r.t)),feel:tag("feel")||FEEL.test(all),why:WHY.test(all),end:tag("end"),wrap:tag("wrap")}; },
+  ckFrom(h){ return {or:h.who&&(h.where||h.when),ord:h.events,hp:h.high,fe:h.feel,res:h.end,ref:h.wrap}; },
+  shape(rows,h){ const n=rows.length; if(n<3) return "Too short to tell yet. Keep going.";
+   const iEnd=rows.findIndex(r=>r.tag==="end"), late=iEnd>-1&&rows.slice(iEnd+1).some(r=>r.tag==="event"||r.tag==="set"), setN=[h.who,h.where,h.when].filter(Boolean).length;
+   if(late) return "Jumps around. Parts come after the ending. Try telling it again in order.";
+   if(!h.high) return "A list of events. Things happen in order, but there is no big moment yet.";
+   if(rows[0].tag==="open"&&setN<2) return "Starts with the headline. The listener still needs to know "+[!h.who&&"who",!h.where&&"where",!h.when&&"when"].filter(Boolean).join(" and ")+".";
+   if(!h.end) return "Ends at the big moment. It stops at the exciting part. How did it turn out?";
+   if(!h.feel) return "Has a shape, no feelings yet. It builds up and finishes. Add how it felt.";
+   return "A complete story. It sets the scene, builds to a big moment and finishes."; },
+  brief:`Analyse with high point analysis (Peterson & McCabe) and this personal-story checklist: orientation (who, where, when), events in order, high point, feelings and why it mattered, resolution, reflection.`,
+  tagHelp:`open = headline or abstract that says what the story is about; set = who, where or when; event = something that happened; high = the main or most significant moment; feel = a feeling, thought or evaluation; end = how it turned out; wrap = a reflection or closing comment about now or next time.`,
+  hasHelp:`who/where/when = the listener is told, including loose time words such as "long weekend" or "in the holidays"; events = at least two things happen, or one event plus an opener; high = there is a clear main moment; feel = the child shows how they felt or what they thought of it, either a named feeling ("I was scared") or an evaluation ("Gosh", "it was so long", "it was boring"); why = a reason is given (because, so); end = it says how things turned out; wrap = a closing reflection.`},
+ fiction:{label:"Story page",who:"his",topics:[],short:{},
+  marks:[["ch","Character",1,"Who is the story about?","“There was a…”"],["se","Setting",1,"Where and when?","“One day, at the…”"],["pr","Problem",3,"What was the problem?","“But then…”"],["fe","Feeling",4,"How did they feel about it?","“He felt… because…”"],["ac","Action",2,"What did they do about it?","“So he…”"],["en","Ending",5,"How did it end?","“In the end…”"],["ef","End feeling",5,"How did they feel at the end?","“Then he felt…”"]],
+  tags:[["ch","Character",1],["se","Setting",1],["pr","Problem",3],["fe","Feeling",4],["ac","Action",2],["en","Ending",5],["ef","End feeling",5],["ot","Other",2]],
+  g2t:{ch:"ch",se:"se",pr:"pr",fe:"fe",ac:"ac",en:"en",ef:"ef"},
+  ck:{ch:"ch",se:"se",pr:"pr",fe:"fe",ac:"ac",en:"en",ef:"ef"},
+  patterns:["Descriptive sequence","Action sequence","Reactive sequence","Abbreviated episode","Complete episode","Complex episode"],patLabel:"Story grammar level",
+  guess(t,first){ if(END.test(t)) return FEEL.test(t)?"ef":"en"; if(first||CHAR.test(t)) return WHERE.test(t)&&!CHAR.test(t)?"se":"ch"; if(PROB.test(t)) return "pr"; if(FEEL.test(t)) return "fe"; if(ACT.test(t)) return "ac"; if(WHEN.test(t)||WHERE.test(t)) return "se"; return "ot"; },
+  has(rows){ const all=rows.map(r=>r.t).join(" . "), tag=k=>rows.some(r=>r.tag===k), iEn=rows.findIndex(r=>r.tag==="en"||r.tag==="ef");
+   return {ch:tag("ch"),se:tag("se")||WHERE.test(all)||WHEN.test(all),pr:tag("pr"),fe:tag("fe"),ac:tag("ac"),en:tag("en")||tag("ef"),ef:tag("ef")||(iEn>-1&&rows.slice(iEn).some(r=>FEEL.test(r.t)))}; },
+  ckFrom(h){ return h; },
+  shape(rows,h){ if(rows.length<3) return "Too short to tell yet. Keep going."; if(!h.pr) return "Things happen, but there is no problem yet. What went wrong?"; if(!h.ac) return "There is a problem. What did they do about it?"; if(!h.en) return "They tried to fix it. How did it end?"; if(!h.fe) return "It has a problem, a plan and an ending. Add how they felt."; return "A complete story: a problem, what they did and how it ended."; },
+  brief:`Analyse with story grammar (Stein & Glenn): character, setting, problem (initiating event), feeling about the problem (internal response), action or plan (attempt), ending (consequence), end feeling (reaction).`,
+  tagHelp:`ch = introduces a character; se = where or when; pr = the problem or initiating event; fe = a character's feeling about the problem; ac = an action or plan to fix it; en = how it ended; ef = how a character felt at the end; ot = anything else.`,
+  hasHelp:`ch = a main character is introduced; se = a place or time is given; pr = there is a clear problem; fe = a feeling about the problem is stated; ac = at least one attempt or plan to solve it; en = it says how things turned out; ef = a feeling at the end is stated.`}
+};
+const T={}; // transient state per client and genre
+const st=(c,g)=>T[c.id+g]||(T[c.id+g]={ai:null,pend:"",clinOn:false,busy:false,granted:false,prev:{},autoT:0});
+const data=(c,g)=>{ c.sp=c.sp||{}; if(!c.sp[g]) c.sp[g]={rows:[],goes:[],topic:G[g].topics[0]||""}; return c.sp[g]; };
+let sampler; // undefined = not asked yet, null = unavailable
+async function getSampler(){ if(sampler!==undefined) return sampler; try{ sampler=window.claude&&window.claude.use?await window.claude.use("sample"):null; }catch(e){ sampler=null; } return sampler; }
+const sig=d=>d.rows.map(r=>r.t.trim()).join("|");
+const fresh=(d,s)=>s.ai&&s.ai.sig===sig(d);
+const story=d=>d.rows.map(r=>r.t.trim()).filter(Boolean).map(t=>{t=t[0].toUpperCase()+t.slice(1); return /[.!?…”"]$/.test(t)?t:t+".";}).join(" ");
+const hasOf=(c,g)=>{ const d=data(c,g), s=st(c,g); return fresh(d,s)?s.ai.has:G[g].has(d.rows); };
+function ckOf(c,g){ const d=data(c,g), s=st(c,g), cf=G[g], act=ckItems(c,g).filter(i=>i.ok), raw=fresh(d,s)?s.ai.checklist:null, kw=cf.ckFrom(cf.has(d.rows));
+ return act.map(i=>({id:i.id,l:i.l,on:raw?!!raw[cf.ck[i.id]]:!!kw[i.id]})); }
+function shell(c,g){ const d=data(c,g); return `<details class="tales proto spd" ${po("sp-"+g)}><summary><b>Story page</b> <span class="agetag">${d.rows.length?d.rows.length+" on the page":"type the story, see what’s missing"}</span></summary><div class="sp" data-g="${g}"></div></details>`; }
+function paint(root){ const c=cur(); if(!c) return; const g=root.dataset.g, cf=G[g], d=data(c,g), s=st(c,g), h=hasOf(c,g), n=cf.marks.filter(m=>h[m[0]]).length, miss=cf.marks.filter(m=>!h[m[0]]), ok=fresh(d,s);
+ const fade=c.spFade||1, pm=cf.marks.find(m=>m[0]===s.pend), ck=ckOf(c,g), ckn=ck.filter(x=>x.on).length;
+ const act=document.activeElement, keep=act&&root.contains(act)&&act.dataset?{id:act.dataset.id,tag:act.tagName,sel:act.selectionStart,add:act.classList.contains("sp-in")}:null;
+ root.dataset.fade=fade;
+ root.innerHTML=`<div class="sp-bar"><div class="sp-help" role="group" aria-label="Help shown"><span>Help shown:</span>${[["1","Full"],["2","No starters"],["3","Words only"],["4","None"]].map(([v,l])=>`<button data-spf="${v}" aria-pressed="${fade==v}">${l}</button>`).join("")}</div>
+   <button class="sp-tog sp-noshow" data-sp="clin" aria-pressed="${s.clinOn}">Clinician notes</button><button class="sp-tog" data-sp="solo">${document.body.classList.contains("sp-solo")?"Back to my view":"Show to child"}</button></div>
+  <div class="sp-cols"><div class="sp-book">
+   <div class="sp-tabs">${cf.topics.map(t=>`<button class="sp-tab" aria-pressed="${t===d.topic}" data-spt="${esc(t)}">${esc(cf.short[t]||t)}</button>`).join("")}<input class="sp-own" type="text" value="${cf.topics.includes(d.topic)?"":esc(d.topic)}" placeholder="${cf.topics.length?"your own…":"Which story or book?"}" aria-label="${cf.topics.length?"Type your own topic":"Story or book name"}"></div>
+   <div class="sp-page"><h3 class="sp-title">${esc(d.topic||(cf.topics.length?"":"Story retell"))}</h3>
+    <ol class="sp-rows">${d.rows.map((r,i)=>{const tg=cf.tags.find(t=>t[0]===r.tag)||cf.tags[0]; return `<li class="sp-row" style="--c:var(--sp-c${tg[2]});--hl:var(--sp-n${tg[2]})"><select data-id="${r.id}" aria-label="Part for sentence ${i+1}">${cf.tags.map(([k,l])=>`<option value="${k}" ${k===r.tag?"selected":""}>${l}</option>`).join("")}</select><textarea data-id="${r.id}" rows="1" aria-label="Sentence ${i+1}">${esc(r.t)}</textarea><button class="sp-del" data-spdel="${r.id}" aria-label="Remove sentence ${i+1}">×</button></li>`;}).join("")}</ol>
+    <form class="sp-add"><span class="sp-nx" aria-hidden="true">next</span><input class="sp-in" type="text" autocomplete="off" placeholder="${pm&&!h[s.pend]?esc(pm[3]):"Type what they say, then press Enter"}" aria-label="Type what they say"><button class="btn sm" type="submit">Add</button></form>
+    <ol class="sp-rows sp-ghosts" aria-label="Parts still to tell">${miss.map(([k,l,cc,q,stt])=>`<li><button class="sp-ghost ${s.pend===k?"sel":""}" data-spg="${k}" style="--c:var(--sp-c${cc});--hl:var(--sp-n${cc})" aria-pressed="${s.pend===k}"><span class="gl">${l}</span><span class="gt"><span class="q">${q}</span> <span class="stt">${stt}</span></span></button></li>`).join("")}</ol>
+   </div></div>
+  <div class="sp-sheet"><ul class="sp-stks">${cf.marks.map(([k,l,cc],i)=>`<li class="sp-stk ${h[k]?"on":""} ${h[k]&&!s.prev[k]?"new":""}" style="--c:var(--sp-c${cc});--r:${[-5,3,-2,4,-4,2,5,-3,3][i]}deg"><span class="disc"><svg viewBox="0 0 64 64" aria-hidden="true">${SV[{ch:"who",se:"where",pr:"prob",fe:"feel",ac:"act",en:"end",ef:"smile"}[k]||k]}</svg></span><span>${l}</span></li>`).join("")}</ul>
+   <p class="sp-pen" aria-live="polite">${esc(s.busy?"Reading the story…":ok?s.ai.kid:(s.err||cf.shape(d.rows,h)))}</p>
+   ${s.clinOn?`<section class="sp-clin sp-noshow" aria-label="Clinician notes">${ok?`<h4>${cf.patLabel}: ${esc(s.ai.pattern)}</h4><p>${esc(s.ai.pattern_why)}</p>`:`<p>${sampler===null?"The checker isn’t available here, so this is a keyword guess.":s.ai?"The story changed. Press Check again.":"Keyword guess only. Press Check the story for Claude’s reading."}</p>`}
+     <h4>Checklist: ${ckn} of ${ck.length}</h4><ul>${ck.map(x=>`<li class="${x.on?"":"no"}">${x.on?"✓":"–"} ${esc(x.l.split(":")[0])}</li>`).join("")}</ul>${ok?`<p><b>Try next:</b> ${esc(s.ai.next_prompt)}</p><p class="sm">Claude’s reading of the typed sentences. Confirm before recording.</p>`:""}</section>`:""}
+  </div></div>
+  <div class="sp-foot"><span class="sp-count"><b>${n}</b> of ${cf.marks.length} stickers</span>
+   ${sampler===null?"":`<button class="btn sm pri" data-sp="check" ${s.busy||!d.rows.length||ok?"disabled":""}>${s.busy?"Checking…":ok?"Checked":s.ai&&d.rows.length?"Check again":"Check the story"}</button>`}
+   <button class="btn sm" data-sp="read" ${d.rows.length?"":"disabled"}>Read the story</button><button class="btn sm sp-noshow" data-sp="save" ${d.rows.length?"":"disabled"}>Save to client file</button><button class="btn sm" data-sp="clear" ${d.rows.length?"":"disabled"}>Start again</button>
+   <span class="sp-goes sp-noshow">${d.goes.slice(-4).map((x,i)=>`<button class="sp-go" data-spgo="${d.goes.length-Math.min(4,d.goes.length)+i}" title="Read this story">${esc(x.d)}: <b>${x.n}/${x.t}</b></button>`).join("")}</span></div>
+  <div class="sp-read" hidden><div class="sp-page"><h3 class="sp-title"></h3><p></p></div><div><button class="btn sm pri" data-sp="back">Back to the page</button> <button class="btn sm" data-sp="copy">Copy story</button></div></div>`;
+ s.prev=h; fit(root);
+ if(keep){ const el=keep.add?root.querySelector(".sp-in"):root.querySelector(`${keep.tag.toLowerCase()}[data-id="${keep.id}"]`); if(el){ el.focus(); if(keep.sel!=null&&el.setSelectionRange) try{el.setSelectionRange(keep.sel,keep.sel);}catch(e){} } }
+}
+function fit(root){ const lh=parseFloat(getComputedStyle(root).getPropertyValue("--lh"))||44; root.querySelectorAll(".sp-row textarea").forEach(t=>{ t.style.height=lh+"px"; t.style.height=Math.max(1,Math.ceil((t.scrollHeight-2)/lh))*lh+"px"; }); }
+function prompt(c,g){ const cf=G[g], d=data(c,g);
+ return `You are helping a speech pathologist analyse a child's spoken ${g==="fiction"?"story retell":"personal narrative"}, typed sentence by sentence during a session. ${c.age?`The child is aged ${c.age}. `:""}${g==="fiction"?"Story":"Topic"}: "${d.topic||"not given"}".
+
+Sentences, in the order the child said them:
+${d.rows.map((r,i)=>`${i+1}. ${r.t.trim()}`).join("\n")}
+
+${cf.brief}
+
+Return ONLY JSON in exactly this shape:
+{"tags":[one per sentence, each one of ${cf.tags.map(t=>'"'+t[0]+'"').join(",")}],
+"has":{${cf.marks.map(m=>'"'+m[0]+'":bool').join(",")}},
+"kid":"one or two short sentences spoken to the child",
+"pattern":one of ${JSON.stringify(cf.patterns)},
+"pattern_why":"one sentence for the clinician",
+"checklist":{${[...new Set(Object.values(cf.ck))].map(k=>'"'+k+'":bool').join(",")}},
+"next_prompt":"the single most useful neutral question the clinician could ask next"}
+
+Tag meanings: ${cf.tagHelp}
+"has" keys: ${cf.hasHelp}
+The "kid" message is read by the child on a shared screen. Use plain words a 6-year-old can read, Australian English, warm and matter-of-fact. Say one thing they did well, then the one part to add. If the story is about something sad or frightening, be gentle and never call it a best or fun part. No jargon, no exclamation marks.`; }
+function valid(o,c,g){ const cf=G[g], d=data(c,g); return o&&Array.isArray(o.tags)&&o.tags.length===d.rows.length&&o.tags.every(t=>cf.tags.some(x=>x[0]===t))&&o.has&&cf.marks.every(m=>typeof o.has[m[0]]==="boolean")&&typeof o.kid==="string"&&o.kid.trim()&&o.checklist&&Object.values(cf.ck).every(k=>typeof o.checklist[k]==="boolean")&&typeof o.pattern==="string"; }
+const rootOf=g=>document.querySelector(`.sp[data-g="${g}"]`);
+const repaint=g=>{ const r=rootOf(g); if(r) paint(r); };
+async function check(c,g,auto){ const d=data(c,g), s=st(c,g); if(s.busy||!d.rows.length) return; const sm=await getSampler(); if(!sm){ repaint(g); return; }
+ s.busy=true; s.err=""; repaint(g); const s0=sig(d);
+ try{ const o=await sm.json(prompt(c,g),{modelTier:"default",cache:false}); if(!valid(o,c,g)) throw {code:"bad_shape"};
+  if(s0===sig(d)){ d.rows.forEach((r,i)=>r.tag=o.tags[i]); s.ai={sig:s0,has:o.has,kid:o.kid.trim(),pattern:o.pattern,pattern_why:String(o.pattern_why||""),checklist:o.checklist,next_prompt:String(o.next_prompt||"")}; persist(c); }
+  s.busy=false; s.granted=true; repaint(g); if(!fresh(d,s)) autoCheck(c,g);
+ }catch(err){ s.busy=false; if(err&&err.code==="not_granted") sampler=null; if(!auto) s.err=err&&err.code==="rate_limited"?"Too many checks in a row. Try again in a minute.":"Couldn’t check just now. The stickers are using a simple guess."; repaint(g); s.err=""; } }
+function autoCheck(c,g){ const s=st(c,g); clearTimeout(s.autoT); if(!sampler||!s.granted) return; s.autoT=setTimeout(()=>{ if(!fresh(data(c,g),s)) check(c,g,true); },900); }
+function save(c,g){ const cf=G[g], d=data(c,g), s=st(c,g); if(!d.rows.length) return; const ck=ckOf(c,g), n=ck.filter(x=>x.on).length, t=ck.length, ok=fresh(d,s);
+ const day=new Date().toLocaleDateString("en-AU",{day:"numeric",month:"short"}), txt=story(d);
+ c.ckLog=Object.assign({},c.ckLog,{[g]:((c.ckLog||{})[g]||[]).concat([{d:day,n,t}])});
+ const note=`Story page ${new Date().toLocaleDateString("en-AU")}${d.topic?` (${d.topic})`:""}: “${txt}” Checklist ${n}/${t}${ck.filter(x=>!x.on).length?`, missing ${ck.filter(x=>!x.on).map(x=>x.l.split(":")[0].toLowerCase()).join(", ")}`:""}.${ok?` ${cf.patLabel}: ${s.ai.pattern} (Claude’s reading, to confirm).`:""}`;
+ c.sampleNotes=c.sampleNotes||{}; c.sampleNotes[g]=((c.sampleNotes[g]||"").trim()?c.sampleNotes[g].trim()+"\n":"")+note;
+ d.goes.push({d:day,n,t,topic:d.topic,story:txt,pattern:ok?s.ai.pattern:""}); d.rows=[]; s.ai=null; s.pend=""; persist(c); renderPane(); }
+function solo(on){ document.body.classList.toggle("sp-solo",on); document.querySelectorAll(".sp").forEach(paint); }
+document.addEventListener("click",e=>{ const root=e.target.closest&&e.target.closest(".sp"); if(!root) return; const b=e.target.closest("button"); if(!b) return; const c=cur(); if(!c) return; const g=root.dataset.g, d=data(c,g), s=st(c,g);
+ if(b.dataset.spf){ c.spFade=+b.dataset.spf; persist(c); paint(root); }
+ else if(b.dataset.spt){ d.topic=b.dataset.spt; persist(c); paint(root); }
+ else if(b.dataset.spg){ s.pend=s.pend===b.dataset.spg?"":b.dataset.spg; paint(root); root.querySelector(".sp-in").focus(); }
+ else if(b.dataset.spdel){ d.rows=d.rows.filter(r=>r.id!=b.dataset.spdel); persist(c); paint(root); autoCheck(c,g); }
+ else if(b.dataset.spgo){ const x=d.goes[+b.dataset.spgo]; showRead(root,(x.topic||"Story")+" · "+x.d,x.story); }
+ else if(b.dataset.sp==="clin"){ s.clinOn=!s.clinOn; paint(root); }
+ else if(b.dataset.sp==="solo"){ solo(!document.body.classList.contains("sp-solo")); }
+ else if(b.dataset.sp==="check"){ check(c,g,false); }
+ else if(b.dataset.sp==="read"){ showRead(root,d.topic||"My story",story(d)); }
+ else if(b.dataset.sp==="back"){ root.querySelector(".sp-read").hidden=true; root.querySelector(".sp-cols").hidden=false; }
+ else if(b.dataset.sp==="copy"){ const r=root.querySelector(".sp-read"), t=r.querySelector("h3").textContent+"\n"+r.querySelector("p").textContent; try{navigator.clipboard.writeText(t).then(()=>{b.textContent="Copied";},()=>{b.textContent="Couldn’t copy";});}catch(err){b.textContent="Couldn’t copy";} }
+ else if(b.dataset.sp==="save"){ save(c,g); }
+ else if(b.dataset.sp==="clear"){ d.rows=[]; s.ai=null; s.pend=""; persist(c); paint(root); }
+});
+function showRead(root,title,text){ const r=root.querySelector(".sp-read"); r.querySelector("h3").textContent=title; r.querySelector("p").textContent=text; r.hidden=false; root.querySelector(".sp-cols").hidden=true; r.querySelector("button").focus(); }
+document.addEventListener("submit",e=>{ const f=e.target; if(!f.classList||!f.classList.contains("sp-add")) return; e.preventDefault(); const root=f.closest(".sp"), c=cur(); if(!c) return; const g=root.dataset.g, cf=G[g], d=data(c,g), s=st(c,g), v=f.querySelector(".sp-in").value.trim(); if(!v) return;
+ (v.match(/[^.!?]+[.!?]*/g)||[v]).map(x=>x.trim()).filter(Boolean).forEach((t,i)=>d.rows.push({id:Date.now().toString(36)+i+Math.random().toString(36).slice(2,5),t,tag:s.pend&&i===0?cf.g2t[s.pend]:cf.guess(t,d.rows.length===0)})); s.pend="";
+ persist(c); paint(root); root.querySelector(".sp-in").focus(); autoCheck(c,g); });
+document.addEventListener("change",e=>{ const root=e.target.closest&&e.target.closest(".sp"); if(!root) return; const c=cur(); if(!c) return; const g=root.dataset.g, d=data(c,g);
+ if(e.target.tagName==="SELECT"){ const r=d.rows.find(x=>x.id==e.target.dataset.id); if(r){ r.tag=e.target.value; persist(c); paint(root); } }
+ else if(e.target.classList.contains("sp-own")){ const v=e.target.value.trim(); if(v){ d.topic=v; persist(c); paint(root); } } });
+document.addEventListener("input",e=>{ const t=e.target; if(t.tagName!=="TEXTAREA"||!t.closest(".sp-row")) return; const root=t.closest(".sp"), c=cur(); if(!c) return; const g=root.dataset.g, r=data(c,g).rows.find(x=>x.id==t.dataset.id); if(!r) return; r.t=t.value; fit(root); clearTimeout(t._p); t._p=setTimeout(()=>{ persist(c); paint(root); autoCheck(c,g); },700); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&document.body.classList.contains("sp-solo")){ solo(false); return; } if(e.key==="Enter"&&e.target.tagName==="TEXTAREA"&&e.target.closest(".sp-row")){ e.preventDefault(); e.target.closest(".sp").querySelector(".sp-in").focus(); } });
+document.addEventListener("toggle",e=>{ const d=e.target; if(d&&d.classList&&d.classList.contains("spd")&&d.open){ const r=d.querySelector(".sp"); if(r){ if(!r.firstChild) paint(r); else fit(r); } } },true);
+new MutationObserver(()=>{ document.querySelectorAll(".sp").forEach(r=>{ if(!r.firstChild&&r.closest("details").open) paint(r); }); if(!document.querySelector(".sp")) document.body.classList.remove("sp-solo"); }).observe(document.documentElement,{childList:true,subtree:true});
+addEventListener("resize",()=>document.querySelectorAll(".sp").forEach(fit));
+getSampler().then(()=>document.querySelectorAll(".sp").forEach(r=>{ if(r.firstChild) paint(r); }));
+window.spHTML=shell;
+})();
+
 function renderSession(c,el){
   const gs=c.genres.filter(g=>GENRES[g]);
   const list=gs.length?gs:GENRE_ORDER;
@@ -1820,6 +2238,7 @@ function renderSession(c,el){
   const big=GENRES[g].items.filter(i=>i.t===1&&!i.pa);
   el.innerHTML=`
     <div class="chips">${list.map(x=>`<button class="chip gchip g-${x} ${x===g?"on":""}" data-sg="${x}">${esc(gname(x,c))}</button>`).join("")}</div>
+    ${g==="personal"||g==="opinion"||g==="fiction"?`<div class="protorow g-${g}">${g==="personal"?spHTML(c,g)+photoHTML()+talesHTML():g==="fiction"?spHTML(c,g):persuadeHTML()}</div>`:""}
     <div class="ses3">
       <section class="card g-${g}">
         <h2>Prompt ladder</h2>
@@ -1836,7 +2255,6 @@ function renderSession(c,el){
         </section>
       </div>
       <div class="body">
-        ${g==="personal"?`<section class="card g-${g}">${talesHTML()}</section>`:g==="opinion"?`<section class="card g-${g}">${persuadeHTML()}</section>`:""}
         <section class="card g-${g}"><h2>Elicitation prompts</h2><ul class="qlist say">${I.prompts.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></section>
         <section class="card g-${g}"><h2>Activities</h2><ul class="qlist">${I.ideas.map(p=>`<li>${esc(p)}</li>`).join("")}</ul></section>
       </div>
@@ -2003,7 +2421,7 @@ function renderLibrary(c,el){
       <div style="padding:12px 16px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;font-size:.88rem">
         <div><span class="lbl2">Checklist (${CK[g].task})</span><ol style="margin:4px 0 0;padding-left:18px">${CK[g].items.map(([,l,a])=>`<li>${esc(l)}${a?` <span class="agetag">~${a}+</span>`:""}</li>`).join("")}</ol></div>
         <div><span class="lbl2">Real life</span><p><b>Children:</b> ${esc(REAL[g].young)}</p><p style="margin-top:6px"><b>Teens:</b> ${esc(REAL[g].teen)}</p></div></div>
-      ${g==="personal"||g==="opinion"?`<div style="padding:12px 16px;border-bottom:1px solid var(--line)">${g==="personal"?talesHTML():persuadeHTML()}</div>`:""}
+      ${g==="personal"||g==="opinion"?`<div style="padding:12px 16px;border-bottom:1px solid var(--line)">${g==="personal"?photoHTML()+talesHTML():persuadeHTML()}</div>`:""}
       <div class="typ">${Object.keys(BANDS).map(b=>`<div class="${mode==="client"&&b!==c.band?"dimb":""}"><span class="k">${BANDS[b].label}</span>${esc(TYPICAL[g][b])}</div>`).join("")}</div>
       <div class="libgrid">${items.map(it=>{ const key=g+"."+it.id, a=AGE[key], ok=mode==="all"||expected(c,g,it.id), x=X[key];
         return `<div class="lib ${ok?"":"nyet"}">
@@ -2050,6 +2468,9 @@ function setRail(col){
   const t=$("railTog"); t.innerHTML=col?'<span class="tw">Clients</span> ›':"‹ <span>Hide</span>"; t.setAttribute("aria-expanded",String(!col)); t.setAttribute("aria-label",col?"Expand sidebar":"Collapse sidebar");
   try{ localStorage.setItem("sc.rail",col?"1":"0"); }catch(e){}
 }
+function setNames(on){ document.querySelector(".rail").classList.toggle("names",on); const t=$("stepTog"); t.textContent=on?"Hide names":"Show names"; t.setAttribute("aria-expanded",String(on)); try{ localStorage.setItem("sc.names",on?"1":"0"); }catch(e){} }
+$("stepTog").onclick=()=>setNames(!document.querySelector(".rail").classList.contains("names"));
+try{ if(localStorage.getItem("sc.names")==="1") setNames(true); }catch(e){}
 $("railTog").onclick=()=>setRail(!document.querySelector(".wrap").classList.contains("rc"));
 try{ if(localStorage.getItem("sc.rail")==="1") setRail(true); }catch(e){}
 function renderAll(){ renderList(); renderSteps(); renderPane(); }
